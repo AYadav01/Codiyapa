@@ -1,8 +1,7 @@
-#README 
-
 **Version 1.0.0**
 
 Problem Statement:
+---
 
 In a garden, trees are arranged in a circular fashion with an equal distance between two adjacent trees. Height of trees may vary. Two monkeys live in that garden and they were very close to each other. One day they quarreled due to some misunderstanding. None of them were ready to leave the garden. But each one of them want that if the other want to meet him, it should take maximum possible time to reach him, given that they both live in the same garden.
 
@@ -10,16 +9,10 @@ The conditions are that a monkey cannot directly jump from one tree to other. Th
 
 So the question is where should two monkeys live such that the travelling time between them is maximum while choosing the shortest path between them in any direction clockwise or anti-clockwise. You have to answer only the maximum travelling time.
 
----
-
 Input/Output Specifications
-
+---
 Input Specification: 
 An integer array containing the height of trees in clock wise fashion
 
 Output Specification: 
 Function will return an integer which will be the maximum possible travel time
-
----
-
-Yadav, Anil (Coppin State University)
