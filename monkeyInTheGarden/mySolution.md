@@ -1,5 +1,3 @@
-**First Attempt**
-
 Solution Domain:
 ---
 
@@ -10,4 +8,4 @@ Bug
 
 The proposed solution will fail in conditions when we have multiple trees of same height.
 
-**Yadav, Anil (Coppin State University)
+**Yadav, Anil (Coppin State University)**
