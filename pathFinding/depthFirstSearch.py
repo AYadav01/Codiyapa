@@ -26,21 +26,24 @@ class Graph(object):
 				if key == destination:
 					values.addNeighbors(source)
 
-
 	def printGraph(self):
 		for keys in self.vertices.keys():
 			print(keys + " -> " + str(self.vertices[keys].neighbors))
 
 #testing the class
-g = Graph()
-for i in range(ord('A'), ord('H')):
-	g.addVertex(Node(chr(i)))
+def makeGraph(graph, node):
+	g = Graph()
+	for i in range(ord('A'), ord('H')):
+		g.addVertex(Node(chr(i)))
 
-edges = ['AB','AD','BC','DE','DF','EG']
+	edges = ['AB','AD','BC','DE','DF','EG']
 
-for everyEdges in edges:
-	g.addEdge(everyEdges[:1], everyEdges[1:])
+	for everyEdges in edges:
+		g.addEdge(everyEdges[:1], everyEdges[1:])
 
-#see the graph
-g.printGraph()
+	#see the graph
+	g.printGraph()
+
+#function test
+makeGraph(Graph, Node)
 
