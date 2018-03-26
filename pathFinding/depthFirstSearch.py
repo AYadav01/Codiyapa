@@ -15,11 +15,11 @@ class Graph(object):
 
 	def addVertex(self, node):
 		if isinstance(node, Node) and node not in self.vertices:
-			self.vertices[node.name] = vertex
+			self.vertices[node.name] = node
 
 	def addEdge(self, source, destination):
-		if soure in self.vertices and destination in self.vertices:
-			for key, values in self.items():
+		if source in self.vertices and destination in self.vertices:
+			for key, values in self.vertices.items():
 				if key == source:
 					values.addNeighbors(destination)
 
@@ -29,5 +29,18 @@ class Graph(object):
 
 	def printGraph(self):
 		for keys in self.vertices.keys():
-			print(keys + " -> " +self.vertices[key].neighbors)
+			print(keys + " -> " + str(self.vertices[keys].neighbors))
+
+#testing the class
+g = Graph()
+for i in range(ord('A'), ord('H')):
+	g.addVertex(Node(chr(i)))
+
+edges = ['AB','AD','BC','DE','DF','EG']
+
+for everyEdges in edges:
+	g.addEdge(everyEdges[:1], everyEdges[1:])
+
+#see the graph
+g.printGraph()
 
