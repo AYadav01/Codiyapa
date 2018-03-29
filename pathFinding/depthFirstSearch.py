@@ -12,9 +12,10 @@ class Node(object):
 #graph class
 class Graph(object):
 	vertices = {}
+	visitedString = ""
 
 	def addVertex(self, node):
-		if isinstance(node, Node) and node not in self.vertices:
+		if isinstance(node, Node) and node.name not in self.vertices:
 			self.vertices[node.name] = node
 
 	def addEdge(self, source, destination):
@@ -30,20 +31,52 @@ class Graph(object):
 		for keys in self.vertices.keys():
 			print(keys + " -> " + str(self.vertices[keys].neighbors))
 
+	def dfsIterative(self, source):
+		#source.visited += source.name
+		#print(source.visited)
+		#initialize a stack with visited node
+		stack = [source.name]
+
+		while stack:
+			currentNode = stack.pop()
+			self.visitedString += str(currentNode)
+			#print(self.visitedString)
+
+			#traversing through the currentNode branches
+			for everyNode in self.vertices[currentNode].neighbors:
+				if everyNode not in self.visitedString:
+					stack.extend(everyNode)
+
+		print("DFS (Iterative) Travarsal: {0.visitedString}".format(self))
+
+	def dfsRecursive(self):
+		pass
+
 #testing the class
-def makeGraph(graph, node):
-	g = Graph()
+g = Graph()
+edges = ['AB','AD','BC','DE','DF','EG']
+
+def dfs(g, edges):
+	a = Node("A")
+	g.addVertex(a)
+
+	#adding vertex upt 'G' with a loop
 	for i in range(ord('A'), ord('H')):
 		g.addVertex(Node(chr(i)))
 
-	edges = ['AB','AD','BC','DE','DF','EG']
-
+	#adding edges
 	for everyEdges in edges:
 		g.addEdge(everyEdges[:1], everyEdges[1:])
 
-	#see the graph
+	#printing the graph
 	g.printGraph()
 
+	#Depth first search iterative call
+	g.dfsIterative(a)
+
 #function test
-makeGraph(Graph, Node)
+dfs(g, edges)
+
+
+
 
