@@ -62,27 +62,35 @@ class Graph(object):
 				self.dfsRecursive(self.vertices[everyEdge])
 
 	def findPath(self, source, goal):
+		#this list records the path as the loop traverses
 		path = []
+		#intialize intial stack to enter the while loop
 		stack = [source]
 
-		while stack:			
+		while stack:
+			#pop the last item from stack and store it in currentNode			
 			currentNode = stack.pop()
 
+			#check if current node is in path (we can implement binary search if the
+			#list goes relatively larege)
 			if currentNode not in path:
 				path.extend(currentNode)
 				#print("path is {0}".format(path))
 
+			#keep checking if we reached our goal
 			if path [-1] == goal:
 				stack.clear()
 			else:
+				#traversing every other nodes connected to current node
 				for everyEdge in self.vertices[currentNode].neighbors:
 					if everyEdge not in path:
 						stack.extend(everyEdge)
 
+					#this check if we reached an end node
 					if everyEdge != source and everyEdge in path:
 						path.pop()
 
-		print("The path form {0} - {1} is {2}".format(source, goal, path))
+		print("The path form '{0}' - '{1}' is {2}".format(source, goal, path))
 
 
 #testing the class
