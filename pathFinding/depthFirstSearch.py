@@ -61,8 +61,29 @@ class Graph(object):
 			if self.vertices[everyEdge].visited == False:
 				self.dfsRecursive(self.vertices[everyEdge])
 
-	def shortestPath(self, source):
-		pass
+	def findPath(self, source, goal):
+		path = []
+		stack = [source]
+
+		while stack:			
+			currentNode = stack.pop()
+
+			if currentNode not in path:
+				path.extend(currentNode)
+				#print("path is {0}".format(path))
+
+			if path [-1] == goal:
+				stack.clear()
+			else:
+				for everyEdge in self.vertices[currentNode].neighbors:
+					if everyEdge not in path:
+						stack.extend(everyEdge)
+
+					if everyEdge != source and everyEdge in path:
+						path.pop()
+
+		print("The path form {0} - {1} is {2}".format(source, goal, path))
+
 
 #testing the class
 g = Graph()
@@ -82,6 +103,7 @@ def makeGraph(g, edges):
 
 	#printing the graph
 	g.printGraph()
+	print()
 
 	#Depth first search iterative call
 	g.dfsIterative(a)
@@ -89,6 +111,10 @@ def makeGraph(g, edges):
 	#Depth first search recursive call
 	g.dfsRecursive(a)
 	print("DFS (Recursive) Travarsal: {0.visitedRecursive}".format(g))
+	print()
+
+	#finding path
+	g.findPath('A','E')
 
 #function test
 makeGraph(g, edges)
