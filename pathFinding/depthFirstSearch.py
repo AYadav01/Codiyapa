@@ -1,4 +1,4 @@
-#every vertex is an instane of the node class
+#every vertex in the graph is an instane of the node class
 class Node(object):
 
 	def __init__(self, name):
@@ -41,7 +41,9 @@ class Graph(object):
 
 		while stack:
 			currentNode = stack.pop()
-			self.visitedIterative += str(currentNode)
+			#this helps gets rid of circular references
+			if currentNode not in self.visitedIterative:
+				self.visitedIterative += str(currentNode)
 			#print(self.visitedString)
 
 			#traversing through the currentNode branches
@@ -59,11 +61,12 @@ class Graph(object):
 			if self.vertices[everyEdge].visited == False:
 				self.dfsRecursive(self.vertices[everyEdge])
 
-
+	def shortestPath(self, source):
+		pass
 
 #testing the class
 g = Graph()
-edges = ['AB','AD','BC','DE','DF','EG']
+edges = ['AB','AD','BC','CE','DE','DF','EG']
 
 def makeGraph(g, edges):
 	a = Node("A")
