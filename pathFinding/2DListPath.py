@@ -1,16 +1,19 @@
+#this function will access the index location of root and goal nodes and print the path directions
 def printer(myList, root, goal):
-
+	#will print the list first
 	print(myList)
 	print()
 
+	#gather the index positions of root and goal
 	rootPosition = findPosition(myList, root)
 	goalPosition = findPosition(myList, goal)
 	print("Path From {0} - {1}:".format(root, goal))
 
+	#will print the final path
 	findDirection(rootPosition, goalPosition)
 
+#this will will determine the direction and length depending upon the index position of the nodes
 def findDirection(rootPosition, goalPosition):
-
 	if goalPosition[0] - rootPosition[0] >= 0:
 		directionForRow = "down"
 		rowDistance = goalPosition[0] - rootPosition[0]
@@ -25,8 +28,10 @@ def findDirection(rootPosition, goalPosition):
 		directionForColumn = "left"
 		columnDistance = rootPosition[1] - goalPosition[1]
 
+	#print the accumulated data
 	print("Go {0} row {1} and {2} column to {3} / Vice-Versa".format(rowDistance, directionForRow, columnDistance, directionForColumn))
 	
+#this function will find the index position of any specified node
 def findPosition(myList, node):
 	i, j = 0, 0
 
@@ -41,17 +46,15 @@ def findPosition(myList, node):
 	
 #make a 2D List
 def Lister(row,column):
-  
   myList = [[None]*column for i in range(row)]  
   return fillPositions(myList, column)
 
 #this function will fill the elements of the 2D list create above
 def fillPositions(myList, column):
   i = 0  
-  start = 65 #we will start from 'A'
+  start = 65 #we will start from 'A' (ASCII representation)
 
   for everyList in myList:
-    
     while i < column:
       everyList[i] = chr(start)
       i += 1
@@ -62,5 +65,5 @@ def fillPositions(myList, column):
 
 #function testing
 
-#will print the path from point 'B' to 'I' in a 3x3 list (as specified in the paramter)
+#will print the path from point 'B' to 'G' in a 3x3 list (as specified in the paramter)
 printer(Lister(3,3), 'B','G')
