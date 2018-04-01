@@ -39,6 +39,28 @@ def findPosition(myList, node):
 		j = 0 
 		i += 1	
 	
-#function testing			
-myList = [["A","B","C"], ["D","E","F"], ["G","H","I"]]
-printer(myList,'B','I')
+#make a 2D List
+def Lister(row,column):
+  
+  myList = [[None]*column for i in range(row)]  
+  return fillPositions(myList, column)
+
+#this function will fill the elements of the 2D list create above
+def fillPositions(myList, column):
+  i = 0  
+  start = 65 #we will start from 'A'
+
+  for everyList in myList:
+    
+    while i < column:
+      everyList[i] = chr(start)
+      i += 1
+      start += 1
+    
+    i = 0
+  return myList
+
+#function testing
+
+#will print the path from point 'B' to 'I' in a 3x3 list (as specified in the paramter)
+printer(Lister(3,3), 'B','G')
