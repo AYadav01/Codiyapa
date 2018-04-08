@@ -65,7 +65,6 @@ class Graph(object):
 
 
   def findPath(self, source, goal):
-  
     onGoing = [source]
     print("starting set is {}".format(onGoing))
     stack = [source]
@@ -75,8 +74,6 @@ class Graph(object):
     finalPath = {}
 
     while stack:
-
-        
       marked = None
       currentNode = stack.pop()
       if currentNode != goal:
@@ -89,15 +86,11 @@ class Graph(object):
               stack.extend(everyElement)
               
             for everyPath in onGoing:
-              
               if everyElement not in everyPath:
-                
                 if everyPath[-1] == currentNode:
                   temp = everyPath
                   marked = temp
-    
                   temp += everyElement
-    
                   if temp[0] == source and temp[-1] == goal:
                     finalPath[i] = temp
                     i += 1
@@ -131,11 +124,11 @@ def makeGraph(g, edges):
   print()
 
   #Depth first search iterative call
-  #g.dfsIterative(a)
+  g.dfsIterative(a)
 
   #Depth first search recursive call
-  #g.dfsRecursive(a)
-  #print("DFS (Recursive) Travarsal: {0.visitedRecursive}".format(g))
+  g.dfsRecursive(a)
+  print("DFS (Recursive) Travarsal: {0.visitedRecursive}".format(g))
   print()
 
   #finding path
